@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "runem.lit-plugin",
+    "dbaeumer.vscode-eslint",
+    "unifiedjs.vscode-mdx",
+    "stylelint.vscode-stylelint"
+  ]
+}

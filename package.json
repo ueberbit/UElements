@@ -1,0 +1,88 @@
+{
+  "name": "@ueberbit/components",
+  "version": "0.0.0",
+  "description": "UEBERBIT Components Library",
+  "author": {
+    "name": "UEBERBIT GmbH",
+    "url": "https://ueberbit.de"
+  },
+  "contributors": [
+    {
+      "name": "Willi Woldt",
+      "email": "willi.woldt@ueberbit.de"
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/ueberbit/components/tree/main",
+  "keywords": [
+    "Component Library",
+    "lit"
+  ],
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build:package": "tsc && vite build",
+    "build:storybook": "storybook build",
+    "build:vscode": "pnpm wca \"./src/**/*.ts\" --outFiles dist/vscode.html-custom-data.json --format vscode",
+    "build:cem": "cem analyze --globs \"src/**/*.ts\" --exclude \"**/*.stories.ts\" --outdir dist --litelement",
+    "dev:storybook": "storybook dev -p 6006 --ci",
+    "dev:cem": "cem analyze --globs \"src/**/*.ts\" --exclude \"**/*.stories.ts\" --outdir dist --litelement --watch",
+    "lint": "pnpm lint:js && pnpm lint:css",
+    "lint:js": "eslint \"src/**/*.{ts}\" --cache --no-error-on-unmatched-pattern",
+    "fix": "pnpm fix:js && pnpm fix:css",
+    "fix:js": "eslint \"src/**/*.{ts}\" --cache --no-error-on-unmatched-pattern --fix",
+    "fix:css": "pnpm dlx stylelint \"src/**/*.css\" --allow-empty-input --fix",
+    "release": "pnpm dlx bumpp package.json --commit --push --tag",
+    "taze": "pnpm dlx taze -r",
+    "postinstall": "pnpm exec simple-git-hooks"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "lit": "3.0.0-pre.0"
+  },
+  "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.8.4",
+    "@storybook/addon-essentials": "^7.1.0",
+    "@storybook/addon-links": "^7.1.0",
+    "@storybook/blocks": "^7.1.0",
+    "@storybook/web-components": "^7.1.0",
+    "@storybook/web-components-vite": "^7.1.0",
+    "@ueberbit/eslint-config": "0.1.0-beta.7",
+    "@ueberbit/stylelint-config": "0.1.0-beta.7",
+    "eslint-plugin-lit": "^1.8.3",
+    "eslint-plugin-lit-a11y": "1.1.0-next.1",
+    "eslint-plugin-storybook": "^0.6.13",
+    "eslint-plugin-wc": "^1.5.0",
+    "lint-staged": "^13.2.3",
+    "simple-git-hooks": "^2.9.0",
+    "storybook": "^7.1.0",
+    "typescript": "^5.0.2",
+    "unplugin-auto-import": "^0.16.6",
+    "vite": "^4.4.5",
+    "web-component-analyzer": "^1.1.7"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged",
+    "preserveUnused": true
+  },
+  "lint-staged": {
+    "src/**/*.{ts}": "pnpm exec eslint --cache --fix",
+    "src/**/*.css": "pnpm dlx stylelint --fix"
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "endOfLine": "auto",
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 120
+  },
+  "stylelint": {
+    "extends": [
+      "@ueberbit/stylelint-config"
+    ]
+  }
+}
