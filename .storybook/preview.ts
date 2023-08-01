@@ -2,6 +2,7 @@
 import type { Preview } from '@storybook/web-components'
 import { setCustomElements } from '@storybook/web-components'
 import customElements from '../dist/custom-elements.json'
+// import customElements from '../dist/custom-elements2.json'
 
 /**
  * Remove private class members from controls.

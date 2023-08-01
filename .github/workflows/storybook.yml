@@ -1,24 +1,19 @@
-name: Release
+name: Build GH Page
 
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 jobs:
-  release:
+  storybook:
     runs-on: ubuntu-latest
     env:
       NODE_VERSION: $(cat .node-version)
 
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      # - name: Get Node Version
-      #   id: node-version
-      #   run: echo "NODE_VERSION=$(cat .node-version)" >> $GITHUB_ENV
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
 
       - uses: actions/setup-node@v3
         with:
@@ -45,21 +40,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      - name: Generate changelog
-        run: npx changelogithub
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install and Build 🔧
+        run: |
+          pnpm i
+          pnpm build
 
-      - run: pnpm i
-      - run: pnpm -r publish --access public --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Microsoft Teams Notification
-        uses: skitionek/notify-microsoft-teams@master
-        if: always()
+      - name: Deploy Storybook 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
-          job: ${{ toJson(job) }}
-          steps: ${{ toJson(steps) }}
-          overwrite: "{title: `Release UElements ${github.ref}`}"
+          branch: gh-pages # The branch the action should deploy to.
+          folder: dist # The folder the action should deploy.

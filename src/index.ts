@@ -1,1 +1,1 @@
-export * from './stories/MyElement.ts'
+export * from './MyElement/MyElement.ts'
