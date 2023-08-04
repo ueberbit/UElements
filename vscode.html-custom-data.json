@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "ue-details",
+      "description": "Details show a brief summary and expand to show additional content..\n\nEvents:\n\n  * `ue-show` {} - Emitted when the details opens.\n\n  * `ue-after-show` {} - Emitted after the details opens and all animations are complete.\n\n  * `ue-hide` {} - Emitted when the details closes.\n\n  * `ue-after-hide` {} - Emitted after the details closes and all animations are complete.\n\nSlots:\n\n  * ` ` {} - The details' main content.\n\n  * `summary` {} - The details' summary. Alternatively, you can use the `summary` attribute.\n\nAttributes:\n\n  * `open` {`boolean`} - Copy for the read the docs hint.\n\n  * `disabled` {`boolean`} - Disables the details so it can’t be toggled.\n\n  * `summary` {`string`} - The summary to show in the header. If you need to display HTML, use the summary slot instead.\n\nProperties:\n\n  * `open` {`boolean`} - Copy for the read the docs hint.\n\n  * `disabled` {`boolean`} - Disables the details so it can’t be toggled.\n\n  * `summary` {`string`} - The summary to show in the header. If you need to display HTML, use the summary slot instead.\n\n  * `styles` - ",
+      "attributes": [
+        {
+          "name": "open",
+          "description": "`open` {`boolean`} - Copy for the read the docs hint.\n\nProperty: open\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - Disables the details so it can’t be toggled.\n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "summary",
+          "description": "`summary` {`string`} - The summary to show in the header. If you need to display HTML, use the summary slot instead.\n\nProperty: summary\n\nDefault: "
+        },
+        {
+          "name": "onue-show",
+          "description": "`ue-show` {} - Emitted when the details opens."
+        },
+        {
+          "name": "onue-after-show",
+          "description": "`ue-after-show` {} - Emitted after the details opens and all animations are complete."
+        },
+        {
+          "name": "onue-hide",
+          "description": "`ue-hide` {} - Emitted when the details closes."
+        },
+        {
+          "name": "onue-after-hide",
+          "description": "`ue-after-hide` {} - Emitted after the details closes and all animations are complete."
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

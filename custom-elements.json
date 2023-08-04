@@ -1,0 +1,103 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "ue-details",
+      "path": "./../src/CustomElements/Details/Details.ts",
+      "description": "Details show a brief summary and expand to show additional content..",
+      "attributes": [
+        {
+          "name": "open",
+          "description": "Copy for the read the docs hint.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "description": "Disables the details so it can’t be toggled.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "summary",
+          "description": "The summary to show in the header. If you need to display HTML, use the summary slot instead.",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "open",
+          "attribute": "open",
+          "description": "Copy for the read the docs hint.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "Disables the details so it can’t be toggled.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "summary",
+          "attribute": "summary",
+          "description": "The summary to show in the header. If you need to display HTML, use the summary slot instead.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "styles",
+          "default": "\"unsafeCSS(styles)\""
+        }
+      ],
+      "events": [
+        {
+          "name": "ue-show",
+          "description": "Emitted when the details opens."
+        },
+        {
+          "name": "ue-after-show",
+          "description": "Emitted after the details opens and all animations are complete."
+        },
+        {
+          "name": "ue-hide",
+          "description": "Emitted when the details closes."
+        },
+        {
+          "name": "ue-after-hide",
+          "description": "Emitted after the details closes and all animations are complete."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "description": "The details' main content."
+        },
+        {
+          "name": "summary",
+          "description": "The details' summary. Alternatively, you can use the `summary` attribute."
+        }
+      ],
+      "cssParts": [
+        {
+          "name": "base",
+          "description": "The component’s base wrapper."
+        },
+        {
+          "name": "summary",
+          "description": "The header that wraps both the summary and the expand/collapse icon."
+        },
+        {
+          "name": "body",
+          "description": "The component’s content wrapper."
+        },
+        {
+          "name": "content",
+          "description": "The details content."
+        }
+      ]
+    }
+  ]
+}
