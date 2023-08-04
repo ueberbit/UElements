@@ -9,6 +9,7 @@ module.exports = {
   ],
   ignorePatterns: [
     '!.storybook',
+    '*.cjs',
   ],
   root: true,
   rules: {

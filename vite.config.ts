@@ -1,5 +1,5 @@
 import { resolve } from 'node:path'
-import { exec, execSync } from 'node:child_process'
+import { execSync } from 'node:child_process'
 import { defineConfig } from 'vite'
 import MagicString from 'magic-string'
 import Unimport from 'unimport/unplugin'
@@ -19,7 +19,19 @@ export default defineConfig({
   define: {
     'process.env': process.env,
   },
+  css: {
+    // transformer: 'lightningcss',
+  },
   base: './',
+  resolve: {
+    alias: {
+      '~/': `${resolve(process.cwd(), 'src/')}`,
+      '@/': `${resolve(process.cwd(), 'src/')}`,
+      'assets/': `${resolve(process.cwd(), 'assets')}/`,
+      'public/': `${resolve(process.cwd(), 'public')}/`,
+      '#internals/': `${resolve(process.cwd(), 'src/internals')}/`,
+    },
+  },
   plugins: [
     {
       name: 'vite-plugin-wca-watcher',
@@ -30,8 +42,8 @@ export default defineConfig({
       },
       transform(code: string) {
         if (code.match(/@customElement/)) {
-          exec('pnpm build:wca:vscode')
-          exec('pnpm build:wca:ce')
+          // exec('pnpm build:wca:vscode') // high cpu usage
+          // exec('pnpm build:wca:ce')
         }
       },
     },
@@ -43,7 +55,7 @@ export default defineConfig({
           return
         if (code.match(/extends UElement/)) {
           const s = new MagicString(code)
-          s.prepend('import UElement from \'../internals/UElement.ts\'\n')
+          s.prepend('import UElement from \'#internals/UElement.ts\'\n')
 
           return {
             code: s.toString(),
@@ -68,10 +80,14 @@ export default defineConfig({
           imports: [
             'adoptStyles',
             'css',
-            'LitElement',
             'html',
+            'LitElement',
             'supportsAdoptingStyleSheets',
             'unsafeCSS',
+            ...[
+              'CSSResult',
+              'CSSResultOrNative',
+            ].map(name => ({ name, type: true })),
           ],
         },
         {
@@ -79,6 +95,44 @@ export default defineConfig({
           imports: [
             'customElement',
             'property',
+            'state',
+          ],
+        },
+        {
+          from: '@storybook/web-components',
+          imports: [
+            ...[
+              'Meta',
+              'StoryObj',
+            ].map(name => ({ name, type: true })),
+          ],
+        },
+        {
+          from: '@storybook/blocks',
+          imports: [
+            'ArgTypes',
+            'Canvas',
+            'ColorPalette',
+            'Controls',
+            'Description',
+            'IconGallery',
+            'Markdown',
+            'Meta',
+            'Primary',
+            'Source',
+            'Stories',
+            'Story',
+            'Subtitle',
+            'Title',
+            'Typeset',
+            'Unstyled',
+            'useOf',
+          ],
+        },
+        {
+          from: '@faker-js/faker',
+          imports: [
+            'faker',
           ],
         },
       ],

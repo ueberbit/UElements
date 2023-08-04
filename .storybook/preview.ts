@@ -1,20 +1,23 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import type { Preview } from '@storybook/web-components'
+import React from 'react'
+import { themes } from '@storybook/theming'
 import { setCustomElements } from '@storybook/web-components'
+import { DocsContainer } from '@storybook/addon-docs'
+import { useDarkMode } from 'storybook-dark-mode'
+import { faker } from '@faker-js/faker'
 import customElements from '../dist/custom-elements.json'
-// import customElements from '../dist/custom-elements2.json'
+import './style.css'
+
+faker.seed(1337)
 
 /**
- * Remove private class members from controls.
+ * Filter out static styles.
  */
-// customElements.modules.forEach((module) => {
-//   module.declarations.forEach((declaration) => {
-//     declaration.members = declaration.members
-//       .filter((member) => member.privacy !== 'private')
-//       .filter((member) => !member.static)
-//   })
-// })
-
+customElements.tags = customElements.tags.map((ce) => {
+  ce.properties = ce.properties.filter(prop => prop.type !== 'CSSResult')
+  return ce
+})
 setCustomElements(customElements)
 
 const preview: Preview = {
@@ -24,6 +27,19 @@ const preview: Preview = {
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/,
+      },
+    },
+    darkMode: {
+      classTarget: 'html',
+      stylePreview: true,
+      light: { ...themes.dark },
+    },
+    docs: {
+      container: (props) => {
+        const isDark = useDarkMode()
+        const currentProps = { ...props }
+        currentProps.theme = isDark ? themes.dark : themes.light
+        return React.createElement(DocsContainer, currentProps)
       },
     },
   },

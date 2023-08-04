@@ -1,0 +1,18 @@
+import { Anchor, Canvas, Description, Controls, Meta, Story, SourceContainer, Title, Subtitle } from '@storybook/blocks'
+import Stories from './Details.stories.ts'
+
+<Meta of={Stories} />
+
+<Title>{Stories.title.split('/').at(-1)}</Title>
+<Subtitle>{`<`}{Stories.component}{`>`}</Subtitle>
+<Description>{__STORYBOOK_CUSTOM_ELEMENTS__.tags.find(ce => ce.name === Stories.component).description}</Description>
+
+<Canvas>
+  <Story id='custom-elements-details--default' ></Story>
+</Canvas>
+
+<Controls />
+
+<Canvas>
+  <Story id='custom-elements-details--htmlsummary' ></Story>
+</Canvas>

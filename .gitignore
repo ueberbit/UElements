@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 unimport.d.ts
+.eslintcache
 
 # Editor directories and files
 .idea

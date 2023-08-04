@@ -1,1 +1,1 @@
-export * from './MyElement/MyElement.ts'
+export * from './CustomElements/Details/Details.ts'

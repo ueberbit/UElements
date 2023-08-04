@@ -1,10 +1,13 @@
 :root {
+  --c-text: hsl(0deg 0% 100% / 87%);
+  --c-content: hsl(0deg 0% 14%);
+
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 400;
   line-height: 1.5;
-  color: rgb(255 255 255 / 87%);
+  color: var(--c-text);
   color-scheme: light dark;
-  background-color: #242424;
+  background-color: var(--c-content);
   font-synthesis: none;
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
@@ -30,9 +33,13 @@ body {
   margin: 0;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #fff;
-  }
+/* @media (prefers-color-scheme: light) { */
+html.light {
+  --c-text: hsl(208deg 37% 20%);
+  --c-content: hsl(0deg 0% 100%);
+}
+
+.sbdocs-preview {
+  max-width: 100%;
+  resize: horizontal;
 }

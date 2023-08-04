@@ -6,7 +6,6 @@ import type { CSSResult, CSSResultOrNative } from 'lit'
 export const baseStyles = css`
   :host {
     box-sizing: border-box;
-    background-color: red;
   }
 
   :host *,
