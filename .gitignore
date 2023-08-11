@@ -25,3 +25,4 @@ unimport.d.ts
 
 # tmp
 build.config.ts
+Details.test.ts

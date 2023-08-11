@@ -1,10 +1,18 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { resolve } from 'node:path'
-import { execSync } from 'node:child_process'
+import { URL, fileURLToPath } from 'node:url'
+import fs from 'node:fs/promises'
 import { defineConfig } from 'vite'
 import MagicString from 'magic-string'
 import Unimport from 'unimport/unplugin'
+import fg from 'fast-glob'
+import { analyzeText, transformAnalyzerResult } from 'web-component-analyzer'
 
 export default defineConfig({
+  // test: {
+  //   globals: true,
+  //   environment: 'happy-dom',
+  // },
   build: {
     target: 'esnext',
     lib: {
@@ -25,11 +33,11 @@ export default defineConfig({
   base: './',
   resolve: {
     alias: {
-      '~/': `${resolve(process.cwd(), 'src/')}`,
-      '@/': `${resolve(process.cwd(), 'src/')}`,
-      'assets/': `${resolve(process.cwd(), 'assets')}/`,
-      'public/': `${resolve(process.cwd(), 'public')}/`,
-      '#internals/': `${resolve(process.cwd(), 'src/internals')}/`,
+      '~': fileURLToPath(new URL('./src', import.meta.url)),
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      'assets': fileURLToPath(new URL('./assets', import.meta.url)),
+      'public': fileURLToPath(new URL('./public', import.meta.url)),
+      '#internals': fileURLToPath(new URL('./src/internals', import.meta.url)),
     },
   },
   plugins: [
@@ -37,14 +45,14 @@ export default defineConfig({
       name: 'vite-plugin-wca-watcher',
       enforce: 'pre',
       buildStart() {
-        execSync('pnpm build:wca:vscode')
-        execSync('pnpm build:wca:ce')
+        generateCustomHTMLData()
       },
-      transform(code: string) {
-        if (code.match(/@customElement/)) {
-          // exec('pnpm build:wca:vscode') // high cpu usage
-          // exec('pnpm build:wca:ce')
-        }
+      async handleHotUpdate({ file, read }) {
+        if (!file.endsWith('.ts'))
+          return
+        const code = await read()
+        if (code.match(/@customElement/))
+          generateCustomHTMLData()
       },
     },
     {
@@ -95,6 +103,7 @@ export default defineConfig({
           imports: [
             'customElement',
             'property',
+            'query',
             'state',
           ],
         },
@@ -143,3 +152,35 @@ export default defineConfig({
     }),
   ],
 })
+
+async function generateCustomHTMLData() {
+  const files = await fg([
+    'src/CustomElements/**/*.ts',
+  ], {
+    onlyFiles: true,
+    ignore: [
+      '**/*.test.ts',
+    ],
+  })
+
+  const contents = (await Promise.all(files.flatMap(async (fileName) => {
+    const fileContent = await fs.readFile(fileName, 'utf-8')
+
+    return fileContent
+  }))).filter(text => text !== '')
+
+  const { results, program } = analyzeText(contents)
+  const vscode = transformAnalyzerResult('vscode', results, program)
+  const json = transformAnalyzerResult('json', results, program)
+
+  try {
+    fs.access('./dist', fs.constants.F_OK)
+  }
+  catch {
+    await fs.mkdir('./dist')
+  }
+  finally {
+    await fs.writeFile('./dist/vscode.html-custom-data.json', vscode)
+    await fs.writeFile('./dist/custom-elements.json', json)
+  }
+}

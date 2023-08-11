@@ -47,6 +47,12 @@ const pushStyles = (
   }
 }
 
+type GetCustomEventType<T> = T extends keyof GlobalEventHandlersEventMap
+  ? GlobalEventHandlersEventMap[T] extends CustomEvent<unknown>
+    ? GlobalEventHandlersEventMap[T]
+    : CustomEvent<unknown>
+  : CustomEvent<unknown>
+
 /**
  * UELEMENT
  */
@@ -61,6 +67,25 @@ export abstract class UElement extends LitElement {
       this.shadowRoot,
       [baseStyles],
     )
+  }
+
+  /**
+   * Emit a custom event with better defaults.
+   */
+  emit<T extends string & keyof GlobalEventHandlersEventMap>(
+    name: string | T,
+    options?: Record<string, any>) {
+    const event = new CustomEvent(name, {
+      bubbles: true,
+      cancelable: false,
+      composed: true,
+      detail: {},
+      ...options,
+    })
+
+    this.dispatchEvent(event)
+
+    return event as GetCustomEventType<T>
   }
 }
 

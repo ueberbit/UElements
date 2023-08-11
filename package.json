@@ -37,6 +37,7 @@
     "fix:css": "pnpm dlx stylelint \"src/**/*.css\" --allow-empty-input --fix",
     "release": "pnpm dlx bumpp package.json --commit --push --tag",
     "taze": "pnpm dlx taze -r",
+    "test": "vitest",
     "postinstall": "pnpm exec simple-git-hooks"
   },
   "peerDependencies": {
@@ -48,6 +49,7 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^8.0.2",
+    "@storybook/addon-actions": "^7.2.1",
     "@storybook/addon-docs": "^7.2.0",
     "@storybook/addon-essentials": "^7.2.0",
     "@storybook/addon-links": "^7.2.0",
@@ -62,6 +64,8 @@
     "eslint-plugin-lit-a11y": "4.1.0",
     "eslint-plugin-storybook": "^0.6.13",
     "eslint-plugin-wc": "^1.5.0",
+    "fast-glob": "^3.3.1",
+    "happy-dom": "^10.8.0",
     "lightningcss": "^1.21.5",
     "lint-staged": "^13.2.3",
     "magic-string": "^0.30.2",
@@ -74,7 +78,13 @@
     "unbuild": "^1.2.1",
     "unimport": "^3.1.0",
     "vite": "^4.4.8",
+    "vitest": "^0.34.1",
     "web-component-analyzer": "^1.1.7"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@storybook/addon-actions@7.2.0": "patches/@storybook__addon-actions@7.2.0.patch"
+    }
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm exec lint-staged",
