@@ -1,5 +1,5 @@
 var s = !0, n = "Invariant failed";
-function r(o, e) {
+function m(o, e) {
   if (!o) {
     if (s)
       throw new Error(n);
@@ -8,6 +8,6 @@ function r(o, e) {
   }
 }
 export {
-  r as i
+  m as i
 };
-//# sourceMappingURL=tiny-invariant-2dc8ba63.mjs.map
+//# sourceMappingURL=tiny-invariant-9065c551.mjs.map

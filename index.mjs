@@ -28,23 +28,23 @@ c.setChannel(_);
 window.__STORYBOOK_ADDONS_CHANNEL__ = _;
 window.CONFIG_TYPE === "DEVELOPMENT" && (window.__STORYBOOK_SERVER_CHANNEL__ = _);
 const d = {
-  "./src/CustomElements/Details/Details.docs.mdx": async () => import("./Details.docs-46d72b1b.mjs"),
-  "./src/CustomElements/Details/Details.stories.ts": async () => import("./Details.stories-89dd9586.mjs")
+  "./src/CustomElements/Details/Details.docs.mdx": async () => import("./Details.docs-3490f84a.mjs"),
+  "./src/CustomElements/Details/Details.stories.ts": async () => import("./Details.stories-2eb5340a.mjs")
 };
 async function l(o) {
   return d[o]();
 }
 const { composeConfigs: a, PreviewWeb: m, ClientApi: p } = __STORYBOOK_MODULE_PREVIEW_API__, E = async () => {
   const o = await Promise.all([
-    import("./config-189b8fe9.mjs"),
+    import("./config-b4ffbb9c.mjs"),
     import("./preview-a6d68c7d.mjs"),
     import("./preview-96092e5b.mjs"),
-    import("./preview-b6b15887.mjs"),
+    import("./preview-0822076e.mjs"),
     import("./preview-3628441a.mjs"),
-    import("./preview-e19ebd82.mjs"),
+    import("./preview-2e66ddd2.mjs"),
     import("./preview-8e61b561.mjs"),
     import("./preview-e28ef412.mjs"),
-    import("./preview-4c201cbb.mjs")
+    import("./preview-18c8a3d5.mjs")
   ]);
   return a(o);
 };

@@ -92,7 +92,7 @@ function H(t, e) {
   }
   return (e === "string" ? String : Number)(t);
 }
-function m(t) {
+function d(t) {
   return Y(t) || U(t) || q(t) || L();
 }
 function L() {
@@ -125,7 +125,7 @@ function b(t, e) {
   return n;
 }
 __STORYBOOK_MODULE_CORE_EVENTS__;
-var _ = M, B = _.document, y = _.window, j = "sb-addon-themes-3";
+var j = M, B = j.document, y = j.window, k = "sb-addon-themes-3";
 (h = y.matchMedia) === null || h === void 0 || h.call(y, "(prefers-color-scheme: dark)");
 var v = {
   classTarget: "body",
@@ -136,17 +136,17 @@ var v = {
   stylePreview: !1,
   userHasExplicitlySetTheTheme: !1
 }, D = function(e) {
-  y.localStorage.setItem(j, JSON.stringify(e));
+  y.localStorage.setItem(k, JSON.stringify(e));
 }, J = function(e, r) {
   var n = r.current, a = r.darkClass, o = a === void 0 ? v.darkClass : a, s = r.lightClass, l = s === void 0 ? v.lightClass : s;
   if (n === "dark") {
     var i, u;
-    (i = e.classList).remove.apply(i, m(d(l))), (u = e.classList).add.apply(u, m(d(o)));
+    (i = e.classList).remove.apply(i, d(m(l))), (u = e.classList).add.apply(u, d(m(o)));
   } else {
     var p, S;
-    (p = e.classList).remove.apply(p, m(d(o))), (S = e.classList).add.apply(S, m(d(l)));
+    (p = e.classList).remove.apply(p, d(m(o))), (S = e.classList).add.apply(S, d(m(l)));
   }
-}, d = function(e) {
+}, m = function(e) {
   var r = [];
   return r.concat(e).map(function(n) {
     return n;
@@ -154,15 +154,15 @@ var v = {
 }, V = function(e) {
   var r = B.querySelector(e.classTarget);
   r && J(r, e);
-}, k = function() {
-  var e = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {}, r = y.localStorage.getItem(j);
+}, C = function() {
+  var e = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {}, r = y.localStorage.getItem(k);
   if (typeof r == "string") {
     var n = JSON.parse(r);
     return e && (e.dark && !T(n.dark, e.dark) && (n.dark = e.dark, D(n)), e.light && !T(n.light, e.light) && (n.light = e.light, D(n))), n;
   }
   return E(E({}, v), e);
 };
-V(k());
+V(C());
 function W(t, e) {
   return z(t) || Z(t, e) || G(t, e) || F();
 }
@@ -173,15 +173,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 function G(t, e) {
   if (t) {
     if (typeof t == "string")
-      return C(t, e);
+      return _(t, e);
     var r = Object.prototype.toString.call(t).slice(8, -1);
     if (r === "Object" && t.constructor && (r = t.constructor.name), r === "Map" || r === "Set")
       return Array.from(t);
     if (r === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r))
-      return C(t, e);
+      return _(t, e);
   }
 }
-function C(t, e) {
+function _(t, e) {
   (e == null || e > t.length) && (e = t.length);
   for (var r = 0, n = new Array(e); r < e; r++)
     n[r] = t[r];
@@ -219,7 +219,7 @@ function z(t) {
 }
 const { addons: Q } = __STORYBOOK_MODULE_ADDONS__;
 function X() {
-  var t = g.useState(k().current === "dark"), e = W(t, 2), r = e[0], n = e[1];
+  var t = g.useState(C().current === "dark"), e = W(t, 2), r = e[0], n = e[1];
   return g.useEffect(function() {
     var a = Q.getChannel();
     return a.on(w, n), function() {
@@ -230,12 +230,11 @@ function X() {
 const ee = "experimental", te = [
   {
     name: "ue-details",
-    path: "./../src/CustomElements/Details/Details.ts",
     description: "Details show a brief summary and expand to show additional content..",
     attributes: [
       {
         name: "open",
-        description: "Copy for the read the docs hint.",
+        description: "If the details is open or closed.",
         type: "boolean",
         default: "false"
       },
@@ -254,9 +253,12 @@ const ee = "experimental", te = [
     ],
     properties: [
       {
+        name: "header"
+      },
+      {
         name: "open",
         attribute: "open",
-        description: "Copy for the read the docs hint.",
+        description: "If the details is open or closed.",
         type: "boolean",
         default: "false"
       },
@@ -358,4 +360,4 @@ const fe = {
 export {
   fe as default
 };
-//# sourceMappingURL=preview-4c201cbb.mjs.map
+//# sourceMappingURL=preview-18c8a3d5.mjs.map

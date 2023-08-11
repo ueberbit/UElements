@@ -3,12 +3,11 @@
   "tags": [
     {
       "name": "ue-details",
-      "path": "./../src/CustomElements/Details/Details.ts",
       "description": "Details show a brief summary and expand to show additional content..",
       "attributes": [
         {
           "name": "open",
-          "description": "Copy for the read the docs hint.",
+          "description": "If the details is open or closed.",
           "type": "boolean",
           "default": "false"
         },
@@ -27,9 +26,12 @@
       ],
       "properties": [
         {
+          "name": "header"
+        },
+        {
           "name": "open",
           "attribute": "open",
-          "description": "Copy for the read the docs hint.",
+          "description": "If the details is open or closed.",
           "type": "boolean",
           "default": "false"
         },
