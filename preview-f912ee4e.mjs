@@ -3,11 +3,11 @@ import { s as I } from "./chunk-757FFUVQ-56377ab9.mjs";
 import "./DocsRenderer-3PUGWF3O-7fdcef2b.mjs";
 import { s as M } from "./index-51e7740f.mjs";
 import { g as R } from "./index-36ec6e8e.mjs";
-import { f as x } from "./index-48d82811.mjs";
+import { f as $ } from "./index-48d82811.mjs";
 import "./index-d79fba58.mjs";
 import "./index-398c73a4.mjs";
 import "./lit-element-c68fb12d.mjs";
-var w = "DARK_MODE", K = function t(e, r) {
+var w = "DARK_MODE", x = function t(e, r) {
   if (e === r)
     return !0;
   if (e && r && typeof e == "object" && typeof r == "object") {
@@ -42,7 +42,7 @@ var w = "DARK_MODE", K = function t(e, r) {
   }
   return e !== e && r !== r;
 };
-const T = /* @__PURE__ */ R(K);
+const T = /* @__PURE__ */ R(x);
 function f(t) {
   "@babel/helpers - typeof";
   return f = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(e) {
@@ -66,17 +66,17 @@ function E(t) {
   for (var e = 1; e < arguments.length; e++) {
     var r = arguments[e] != null ? arguments[e] : {};
     e % 2 ? A(Object(r), !0).forEach(function(n) {
-      N(t, n, r[n]);
+      K(t, n, r[n]);
     }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(r)) : A(Object(r)).forEach(function(n) {
       Object.defineProperty(t, n, Object.getOwnPropertyDescriptor(r, n));
     });
   }
   return t;
 }
-function N(t, e, r) {
-  return e = $(e), e in t ? Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }) : t[e] = r, t;
+function K(t, e, r) {
+  return e = N(e), e in t ? Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }) : t[e] = r, t;
 }
-function $(t) {
+function N(t) {
   var e = H(t, "string");
   return f(e) === "symbol" ? e : String(e);
 }
@@ -141,12 +141,12 @@ var v = {
   var n = r.current, a = r.darkClass, o = a === void 0 ? v.darkClass : a, s = r.lightClass, l = s === void 0 ? v.lightClass : s;
   if (n === "dark") {
     var i, u;
-    (i = e.classList).remove.apply(i, d(m(l))), (u = e.classList).add.apply(u, d(m(o)));
+    (i = e.classList).remove.apply(i, d(p(l))), (u = e.classList).add.apply(u, d(p(o)));
   } else {
-    var p, S;
-    (p = e.classList).remove.apply(p, d(m(o))), (S = e.classList).add.apply(S, d(m(l)));
+    var m, S;
+    (m = e.classList).remove.apply(m, d(p(o))), (S = e.classList).add.apply(S, d(p(l)));
   }
-}, m = function(e) {
+}, p = function(e) {
   var r = [];
   return r.concat(e).map(function(n) {
     return n;
@@ -199,8 +199,8 @@ function Z(t, e) {
       } else
         for (; !(i = (n = o.call(r)).done) && (l.push(n.value), l.length !== e); i = !0)
           ;
-    } catch (p) {
-      u = !0, a = p;
+    } catch (m) {
+      u = !0, a = m;
     } finally {
       try {
         if (!i && r.return != null && (s = r.return(), Object(s) !== s))
@@ -332,8 +332,14 @@ const ee = "experimental", te = [
   version: ee,
   tags: te
 };
-x.seed(1337);
-O.tags = O.tags.map((t) => (t.properties = t.properties.filter((e) => e.type !== "CSSResult"), t));
+$.seed(1337);
+O.tags = O.tags.map((t) => (t.properties = t.properties.filter((e) => e.name !== "styles" && Object.keys(e).length > 1), t.slots = t.slots.map((e) => ({
+  ...e,
+  name: e.name === "" ? "default " : `${e.name} `
+})), t.cssParts = t.cssParts.map((e) => ({
+  ...e,
+  name: `${e.name}  `
+})), t));
 I(O);
 const fe = {
   parameters: {
@@ -360,4 +366,4 @@ const fe = {
 export {
   fe as default
 };
-//# sourceMappingURL=preview-18c8a3d5.mjs.map
+//# sourceMappingURL=preview-f912ee4e.mjs.map

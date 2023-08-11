@@ -44,7 +44,7 @@ const { composeConfigs: a, PreviewWeb: m, ClientApi: p } = __STORYBOOK_MODULE_PR
     import("./preview-2e66ddd2.mjs"),
     import("./preview-8e61b561.mjs"),
     import("./preview-e28ef412.mjs"),
-    import("./preview-18c8a3d5.mjs")
+    import("./preview-f912ee4e.mjs")
   ]);
   return a(o);
 };
