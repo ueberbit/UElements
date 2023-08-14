@@ -104,6 +104,7 @@ export default defineConfig({
             'customElement',
             'property',
             'query',
+            'queryAll',
             'state',
           ],
         },
@@ -155,7 +156,7 @@ export default defineConfig({
 
 async function generateCustomHTMLData() {
   const files = await fg([
-    'src/CustomElements/**/*.ts',
+    'src/custom-elements/**/*.ts',
   ], {
     onlyFiles: true,
     ignore: [

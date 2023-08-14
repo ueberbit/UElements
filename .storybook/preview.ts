@@ -8,6 +8,7 @@ import { useDarkMode } from 'storybook-dark-mode'
 import { faker } from '@faker-js/faker'
 import customElements from '../dist/custom-elements.json'
 import './style.css'
+import '~/index.ts'
 
 faker.seed(1337)
 
@@ -15,16 +16,16 @@ faker.seed(1337)
  * Filter out static styles.
  */
 customElements.tags = customElements.tags.map((ce) => {
-  ce.properties = ce.properties.filter(prop => prop.name !== 'styles' && Object.keys(prop).length > 1)
+  ce.properties = ce.properties?.filter(prop => prop.name !== 'styles' && Object.keys(prop).length > 1)
 
   // Workaround to have attributes, parts and slots with identical names.
-  ce.slots = ce.slots.map((slot) => {
+  ce.slots = ce.slots?.map((slot) => {
     return {
       ...slot,
       name: slot.name === '' ? 'default ' : `${slot.name} `,
     }
   })
-  ce.cssParts = ce.cssParts.map((cssPart) => {
+  ce.cssParts = ce.cssParts?.map((cssPart) => {
     return {
       ...cssPart,
       name: `${cssPart.name}  `,

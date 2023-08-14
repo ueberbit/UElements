@@ -43,3 +43,19 @@ html.light {
   max-width: 100%;
   resize: horizontal;
 }
+
+.docs-story > div {
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+ue-details {
+  margin-bottom: 0.5rem;;
+}

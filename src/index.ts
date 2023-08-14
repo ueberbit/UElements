@@ -1,1 +1,2 @@
-export * from './CustomElements/Details/Details.ts'
+export * from './custom-elements/details/details.ts'
+export * from './custom-elements/details-group/details-group.ts'

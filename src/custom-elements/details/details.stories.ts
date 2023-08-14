@@ -1,4 +1,4 @@
-import './Details.ts'
+import './details.ts'
 import type { Meta, StoryObj } from '@storybook/web-components'
 import { withActions } from '@storybook/addon-actions/decorator'
 
@@ -31,6 +31,15 @@ export const HTMLSummary: Story = {
 <ue-details ?open="${open}">
   <div slot="summary">Summary with HTML</div>
   <div>${faker.lorem.paragraph(10)}</div>
+</ue-details>
+  `,
+}
+
+export const SlottedIcon: Story = {
+  render: ({ open, summary = 'Custom Icon' }) => html`
+<ue-details ?open="${open}" summary="${summary}">
+  <i slot="icon">💩</i>
+  <div>${faker.lorem.paragraph(2)}</div>
 </ue-details>
   `,
 }

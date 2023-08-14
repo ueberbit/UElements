@@ -1,4 +1,4 @@
-import styles from './Details.css?inline'
+import styles from './details.css?inline'
 
 /**
  * Details show a brief summary and expand to show additional content..
@@ -98,6 +98,7 @@ export class UEDetails extends UElement {
           @keydown="${this._handleSummaryKeyUp}"
           >
           <slot name="summary">${this.summary}</slot>
+          <slot name="icon"><i></i></slot>
         </header>
         <div part="body">
           <div part="content" id="content">
