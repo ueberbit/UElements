@@ -36,6 +36,17 @@
           "description": "`ue-after-hide` {} - Emitted after the details closes and all animations are complete."
         }
       ]
+    },
+    {
+      "name": "ue-detailsgroup",
+      "description": "Details Groups allow grouping of Details. Setting the `multiple` attribute\nallows multiple Details to be open at the same time.\n\nAttributes:\n\n  * `multiple` {`boolean`} - If the details is open or closed.\n\nProperties:\n\n  * `details` - \n\n  * `multiple` {`boolean`} - If the details is open or closed.",
+      "attributes": [
+        {
+          "name": "multiple",
+          "description": "`multiple` {`boolean`} - If the details is open or closed.\n\nProperty: multiple\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
     }
   ],
   "globalAttributes": [],

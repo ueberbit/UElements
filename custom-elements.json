@@ -100,6 +100,27 @@
           "description": "The details content."
         }
       ]
+    },
+    {
+      "name": "ue-detailsgroup",
+      "description": "Details Groups allow grouping of Details. Setting the `multiple` attribute\nallows multiple Details to be open at the same time.",
+      "attributes": [
+        {
+          "name": "multiple",
+          "description": "If the details is open or closed.",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "multiple",
+          "attribute": "multiple",
+          "description": "If the details is open or closed.",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
     }
   ]
 }
