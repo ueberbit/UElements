@@ -1,4 +1,3 @@
-import './details.ts'
 import type { Meta, StoryObj } from '@storybook/web-components'
 import { withActions } from '@storybook/addon-actions/decorator'
 
@@ -10,7 +9,6 @@ const meta = {
       handles: ['ue-show', 'ue-hide', 'ue-after-show', 'ue-after-hide'],
     },
   },
-  // @ts-expect-error actions
   decorators: [withActions],
 } satisfies Meta<any>
 

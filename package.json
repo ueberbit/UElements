@@ -81,11 +81,6 @@
     "vitest": "^0.34.3",
     "web-component-analyzer": "^1.1.7"
   },
-  "pnpm": {
-    "_patchedDependencies": {
-      "@storybook/addon-actions@7.2.0": "patches/@storybook__addon-actions@7.2.0.patch"
-    }
-  },
   "simple-git-hooks": {
     "pre-commit": "pnpm exec lint-staged",
     "preserveUnused": true

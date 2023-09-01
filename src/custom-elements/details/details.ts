@@ -21,6 +21,9 @@ export class UEDetails extends UElement {
   @query('header')
   header!: HTMLElement
 
+  @query('[part=base]')
+  base!: HTMLElement
+
   /**
    * If the details is open or closed.
    */
@@ -46,7 +49,7 @@ export class UEDetails extends UElement {
     this.abortController = new AbortController()
     if (this.open) {
       this.emit('ue-show', { cancelable: true })
-      await waitForEvent(this.header, 'transitionend', {
+      await waitForEvent(this.base, 'transitionend', {
         signal: this.abortController.signal,
       })
       this.emit('ue-after-show')
@@ -54,7 +57,7 @@ export class UEDetails extends UElement {
 
     else {
       this.emit('ue-hide', { cancelable: true })
-      await waitForEvent(this.header, 'transitionend', {
+      await waitForEvent(this.base, 'transitionend', {
         signal: this.abortController.signal,
       })
       this.emit('ue-after-hide')
