@@ -29,6 +29,9 @@
           "name": "header"
         },
         {
+          "name": "base"
+        },
+        {
           "name": "open",
           "attribute": "open",
           "description": "If the details is open or closed.",

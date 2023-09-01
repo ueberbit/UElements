@@ -1,4 +1,4 @@
-import { l as h, b as o, r as a, o as l, A as E, H as R, p as x } from "./index-6d191841.mjs";
+import { l as h, b as o, r as a, o as l, A as E, H as R, p as x } from "./index-f2c466ab.mjs";
 import "./index-36ec6e8e.mjs";
 import "./index-d79fba58.mjs";
 import "./index-398c73a4.mjs";
@@ -40,7 +40,7 @@ var n = /* @__PURE__ */ new Map(), y = ({ callback: e, children: t }) => {
     this.render = async (e, t, r) => {
       let s = { ...g, ...t?.components }, m = x;
       return new Promise((i, p) => {
-        import("./index-14ddf3f2.mjs").then(({ MDXProvider: d }) => w(o.createElement(v, { showException: p, key: Math.random() }, o.createElement(d, { components: s }, o.createElement(m, { context: e, docsParameter: t }))), r)).then(() => i());
+        import("./index-e5cb5176.mjs").then(({ MDXProvider: d }) => w(o.createElement(v, { showException: p, key: Math.random() }, o.createElement(d, { components: s }, o.createElement(m, { context: e, docsParameter: t }))), r)).then(() => i());
       });
     }, this.unmount = (e) => {
       D(e);
@@ -51,4 +51,4 @@ export {
   S as DocsRenderer,
   g as defaultComponents
 };
-//# sourceMappingURL=DocsRenderer-3PUGWF3O-f6f629fe.mjs.map
+//# sourceMappingURL=DocsRenderer-3PUGWF3O-79d1f7f3.mjs.map

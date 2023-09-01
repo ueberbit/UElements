@@ -1,12 +1,11 @@
-import { r as v, M as E, T as C, e as M, D as T, C as u, f as d, g as b } from "./index-6d191841.mjs";
-import a from "./details.stories-ee678318.mjs";
-import { u as j } from "./index-af8d51ce.mjs";
+import { r as v, M as E, T as C, e as M, D as T, C as u, f as d, g as b } from "./index-f2c466ab.mjs";
+import a from "./details.stories-eeb098b4.mjs";
+import { u as j } from "./index-7f2a0896.mjs";
 import "./index-36ec6e8e.mjs";
 import "./index-d79fba58.mjs";
 import "./index-398c73a4.mjs";
 import "./lit-element-c68fb12d.mjs";
 import "./index-48d82811.mjs";
-import "./details-9c2b2761.mjs";
 import "./decorator-8ef0d1cb.mjs";
 import "./chunk-AY7I2SME-1f99da15.mjs";
 var y = { exports: {} }, s = {};
@@ -82,13 +81,13 @@ function h(r) {
     })]
   });
 }
-function W(r = {}) {
+function U(r = {}) {
   const { wrapper: o } = Object.assign({}, j(), r.components);
   return o ? t.jsx(o, Object.assign({}, r, {
     children: t.jsx(h, r)
   })) : h(r);
 }
 export {
-  W as default
+  U as default
 };
-//# sourceMappingURL=details.docs-236dfa98.mjs.map
+//# sourceMappingURL=details.docs-eb5dec22.mjs.map

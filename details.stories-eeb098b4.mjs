@@ -1,9 +1,8 @@
 import { b as m } from "./lit-element-c68fb12d.mjs";
 import { f as t } from "./index-48d82811.mjs";
-import "./details-9c2b2761.mjs";
 import { w as n } from "./decorator-8ef0d1cb.mjs";
 import "./chunk-AY7I2SME-1f99da15.mjs";
-const c = {
+const l = {
   title: "Custom Elements/Details",
   component: "ue-details",
   parameters: {
@@ -11,7 +10,6 @@ const c = {
       handles: ["ue-show", "ue-hide", "ue-after-show", "ue-after-hide"]
     }
   },
-  // @ts-expect-error actions
   decorators: [n]
 }, r = {
   render: ({
@@ -100,12 +98,12 @@ o.parameters = {
     }
   }
 };
-const h = ["Default", "HTMLSummary", "SlottedIcon"];
+const c = ["Default", "HTMLSummary", "SlottedIcon"];
 export {
   r as Default,
   a as HTMLSummary,
   o as SlottedIcon,
-  h as __namedExportsOrder,
-  c as default
+  c as __namedExportsOrder,
+  l as default
 };
-//# sourceMappingURL=details.stories-ee678318.mjs.map
+//# sourceMappingURL=details.stories-eeb098b4.mjs.map
