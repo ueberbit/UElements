@@ -50,9 +50,9 @@
       "#internals/*": [
         "src/internals/*",
       ],
-    }
+    },
   },
   "include": [
     "src"
-  ]
+  ],
 }

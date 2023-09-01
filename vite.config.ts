@@ -1,12 +1,12 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { resolve } from 'node:path'
 import { URL, fileURLToPath } from 'node:url'
 import fs from 'node:fs/promises'
 import { defineConfig } from 'vite'
-import MagicString from 'magic-string'
 import Unimport from 'unimport/unplugin'
 import fg from 'fast-glob'
 import { analyzeText, transformAnalyzerResult } from 'web-component-analyzer'
+// import noBundlePlugin from 'vite-plugin-no-bundle'
+// import dts from 'vite-plugin-dts'
 
 export default defineConfig({
   // test: {
@@ -21,14 +21,18 @@ export default defineConfig({
       formats: ['es'],
     },
     // rollupOptions: {
+    //   output: {
+    //     preserveModules: true,
+    //     preserveModulesRoot: 'src',
+    //     entryFileNames: '[name].js',
+    //   },
+    // },
+    // rollupOptions: {
     //   external: ['lit'],
     // },
   },
   define: {
     'process.env': process.env,
-  },
-  css: {
-    // transformer: 'lightningcss',
   },
   base: './',
   resolve: {
@@ -41,6 +45,8 @@ export default defineConfig({
     },
   },
   plugins: [
+    // dts(),
+    // noBundlePlugin(),
     {
       name: 'vite-plugin-wca-watcher',
       enforce: 'pre',
@@ -53,32 +59,6 @@ export default defineConfig({
         const code = await read()
         if (code.match(/@customElement/))
           generateCustomHTMLData()
-      },
-    },
-    {
-      name: 'vite-plugin-import-extends',
-      enforce: 'pre',
-      async transform(code: string, id: string) {
-        if (id.match(/\/node_modules\//))
-          return
-        if (code.match(/extends UElement/)) {
-          const s = new MagicString(code)
-          s.prepend('import UElement from \'#internals/UElement.ts\'\n')
-
-          return {
-            code: s.toString(),
-            map: s.generateMap(),
-          }
-        }
-        if (code.match(/extends LitElement/)) {
-          const s = new MagicString(code)
-          s.prepend('import { LitElement } from \'lit\'\n')
-
-          return {
-            code: s.toString(),
-            map: s.generateMap(),
-          }
-        }
       },
     },
     Unimport.vite({
@@ -96,6 +76,19 @@ export default defineConfig({
               'CSSResult',
               'CSSResultOrNative',
             ].map(name => ({ name, type: true })),
+          ],
+        },
+        {
+          from: 'lit/static-html.js',
+          imports: [
+            'literal',
+            'unsafeStatic',
+          ],
+        },
+        {
+          from: 'lit/directives/unsafe-html.js',
+          imports: [
+            'unsafeHTML',
           ],
         },
         {
