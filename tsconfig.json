@@ -1,58 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "experimentalDecorators": true,
-    "useDefineForClassFields": false,
+    "target": "ESNext",
     "module": "ESNext",
-    "lib": [
-      "ES2020",
-      "DOM",
-      "DOM.Iterable"
-    ],
-    "skipLibCheck": true,
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "baseUrl": "./",
-    "paths": {
-      "~": [
-        "src",
-      ],
-      "~/*": [
-        "src/*",
-      ],
-      "@": [
-        "src",
-      ],
-      "@/*": [
-        "src/*",
-      ],
-      "assets": [
-        "assets",
-      ],
-      "assets/*": [
-        "assets/*",
-      ],
-      "public": [
-        "public",
-      ],
-      "public/*": [
-        "public/*",
-      ],
-      "#internals/*": [
-        "src/internals/*",
-      ],
-    },
+    "allowJs": true,
+    "checkJs": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "emitDeclarationOnly": true,
+    "outDir": "./types"
   },
-  "include": [
-    "src"
-  ],
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "playground"]
 }
