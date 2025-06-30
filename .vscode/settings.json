@@ -1,0 +1,5 @@
+{
+  "html.customData": [
+    "./data/custom-element-manifest.json"
+  ]
+}

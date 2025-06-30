@@ -1,15 +1,18 @@
 export class Example extends HTMLElement {
-  constructor() {
-    super()
-
-    this.#setup()
+  static get observedAttributes() {
+    return ['customAttr']
   }
 
-  #setup() {
-    this.addEventListener('click', () => {
-      // eslint-disable-next-line no-alert
-      alert('Hello from Example Component!')
-    })
+  set customAttr(val) {
+    this.__customAttr = val
+  }
+
+  get customAttr() {
+    return this.__customAttr
+  }
+
+  fire() {
+    this.dispatchEvent(new Event('customAttr-changed'))
   }
 }
 

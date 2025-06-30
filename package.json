@@ -23,16 +23,23 @@
     }
   },
   "files": [
+    "data",
     "src",
     "types"
   ],
   "scripts": {
     "dev": "pnpm -r dev",
-    "types": "tsc",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build": "pnpm  \"/^build:.*/\"",
+    "build:types": "tsc",
+    "build:wca": "wca analyze \"src/**/*.js\" --outFiles data/custom-element-manifest.json",
+    "experimental:cem": "cem analyze --globs \"src/**/*.js\" --outdir data --packagejson --dev"
   },
   "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.10.4",
     "@ueberbit/eslint-config": "0.7.0-beta.5",
-    "typescript": "^5.8.3"
-  }
+    "typescript": "^5.8.3",
+    "web-component-analyzer": "^2.0.0"
+  },
+  "customElements": "data/custom-elements.json"
 }

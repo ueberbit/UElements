@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/index.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "ce-example",
+          "declaration": {
+            "name": "Example",
+            "module": "/src/components/Example.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ce-test",
+          "declaration": {
+            "name": "Test",
+            "module": "/src/components/Test.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/Example.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Example",
+          "members": [
+            {
+              "kind": "field",
+              "name": "customAttr"
+            },
+            {
+              "kind": "method",
+              "name": "fire"
+            }
+          ],
+          "events": [
+            {
+              "name": "customAttr-changed",
+              "type": {
+                "text": "Event"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "customAttr"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "ce-example",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Example",
+          "declaration": {
+            "name": "Example",
+            "module": "src/components/Example.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ce-example",
+          "declaration": {
+            "name": "Example",
+            "module": "src/components/Example.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/Test.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Test",
+          "members": [
+            {
+              "kind": "method",
+              "name": "#setup",
+              "privacy": "private"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "ce-test",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Test",
+          "declaration": {
+            "name": "Test",
+            "module": "src/components/Test.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ce-test",
+          "declaration": {
+            "name": "Test",
+            "module": "src/components/Test.js"
+          }
+        }
+      ]
+    }
+  ]
+}

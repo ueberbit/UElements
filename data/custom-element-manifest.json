@@ -1,0 +1,53 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "ce-example",
+      "path": "./../src/components/Example.js",
+      "attributes": [
+        {
+          "name": "customAttr"
+        }
+      ],
+      "properties": [
+        {
+          "name": "customAttr",
+          "attribute": "customAttr"
+        }
+      ],
+      "events": [
+        {
+          "name": "customAttr-changed"
+        }
+      ]
+    },
+    {
+      "name": "ce-test",
+      "path": "./../src/components/Test.js"
+    },
+    {
+      "name": "ce-example",
+      "path": "./../src/index.js",
+      "attributes": [
+        {
+          "name": "customAttr"
+        }
+      ],
+      "properties": [
+        {
+          "name": "customAttr",
+          "attribute": "customAttr"
+        }
+      ],
+      "events": [
+        {
+          "name": "customAttr-changed"
+        }
+      ]
+    },
+    {
+      "name": "ce-test",
+      "path": "./../src/index.js"
+    }
+  ]
+}
