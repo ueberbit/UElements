@@ -13,14 +13,8 @@
     "Component Library"
   ],
   "exports": {
-    ".": {
-      "types": "./types/index.d.ts",
-      "import": "./src/index.js"
-    },
-    "./*": {
-      "types": "./types/*.d.ts",
-      "import": "./src/*.js"
-    }
+    ".": "./src/index.js",
+    "./*": "./src/components/*.js"
   },
   "files": [
     "data",
